@@ -139,7 +139,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ConsoleApplication3.cpp" />
+    <ClCompile Include="Config.cpp" />
+    <ClCompile Include="Dichotomy .cpp" />
+    <ClCompile Include="Gold.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Newton.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Config.h" />
+    <ClInclude Include="Dichotomy.h" />
+    <ClInclude Include="Gold.h" />
+    <ClInclude Include="Newton.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
