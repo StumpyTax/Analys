@@ -12,13 +12,16 @@
 
 class Polyline {
 private:
-	std::list<double*> minSegments;
-	std::list<double*> maxSegments;
+	std::list<double*> segments;
 	double FindFirstDerivative(double x);
 	bool FindLocal();
 	double (*pf)(double);
 	Config* cfg;
 public:
+	std::list<double> FindExtr();
+	Polyline(double (*pf)(double));
+	Polyline(double (*pf)(double), Config* cfg);
+	Polyline(Polyline& A);
 };
 
 #endif

@@ -144,12 +144,14 @@
     <ClCompile Include="Gold.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Newton.cpp" />
+    <ClCompile Include="Polyline.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Config.h" />
     <ClInclude Include="Dichotomy.h" />
     <ClInclude Include="Gold.h" />
     <ClInclude Include="Newton.h" />
+    <ClInclude Include="Polyline.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -12,8 +12,8 @@
 
 class Newton {
 private:
-	std::list<double*> minSegments;
-	std::list<double*> maxSegments;
+
+	std::list<double*> segments;
 	double FindFirstDerivative(double x);
 	double FindSecondDerivative(double x);
 	bool FindLocal();
@@ -24,8 +24,6 @@ public:
 	Newton(double (*pf)(double), Config* cfg);
 	Newton(Newton& A);
 	std::list<double> FindExtrems();
-	std::list<double> FindMin();
-	std::list<double> FindMax();
 
 };
 

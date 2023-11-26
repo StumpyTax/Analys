@@ -1,5 +1,6 @@
 #include "Gold.h"
 #include "Newton.h"
+#include "Polyline.h"
 #include <iostream>
 
 double mainf(double x) {
@@ -14,9 +15,11 @@ double testf(double x)
 
 int main(){
 	//Gold gold(mainf);
-	Newton newton(mainf);
 	//auto res = gold.FindExtrems();
-	auto res = newton.FindExtrems();
+	//Newton newton(mainf);
+	//auto res = newton.FindExtrems();
+	Polyline poly(mainf);
+	auto res = poly.FindExtr();
 	for (auto i:res)
 	{
 		printf("\nxextr=%f",i);
