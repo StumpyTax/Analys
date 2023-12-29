@@ -13,42 +13,62 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="SlothUnit">
+      <UniqueIdentifier>{9568c05f-f52f-4762-af48-e1211f63d66e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlothUnit\x86">
+      <UniqueIdentifier>{2b019d2f-2fe2-4af2-8ba2-29f18c318f2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SlothUnit\x64">
+      <UniqueIdentifier>{cf1486bc-3672-4148-97f5-a2ceb95df1df}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Dichotomy .cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Config.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Gold.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Newton.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Polyline.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Gold.h">
-      <Filter>Файлы заголовков</Filter>
+    <ClInclude Include="SlothUnit\TestRunnable.h">
+      <Filter>SlothUnit</Filter>
     </ClInclude>
-    <ClInclude Include="Dichotomy.h">
-      <Filter>Файлы заголовков</Filter>
+    <ClInclude Include="SlothUnit\TestRegistrar.h">
+      <Filter>SlothUnit</Filter>
     </ClInclude>
-    <ClInclude Include="Newton.h">
-      <Filter>Файлы заголовков</Filter>
+    <ClInclude Include="SlothUnit\TestClass.h">
+      <Filter>SlothUnit</Filter>
     </ClInclude>
-    <ClInclude Include="Config.h">
-      <Filter>Файлы заголовков</Filter>
+    <ClInclude Include="SlothUnit\SlothUnit.h">
+      <Filter>SlothUnit</Filter>
     </ClInclude>
-    <ClInclude Include="Polyline.h">
-      <Filter>Файлы заголовков</Filter>
+    <ClInclude Include="SlothUnit\SlothTests.h">
+      <Filter>SlothUnit</Filter>
     </ClInclude>
+    <ClInclude Include="SlothUnit\AssertionException.h">
+      <Filter>SlothUnit</Filter>
+    </ClInclude>
+    <ClInclude Include="SlothUnit\Assertion.h">
+      <Filter>SlothUnit</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SlothUnit\x86\SlothUnit.CodeGenerator.exe">
+      <Filter>SlothUnit\x86</Filter>
+    </None>
+    <None Include="SlothUnit\x86\libclang.dll">
+      <Filter>SlothUnit\x86</Filter>
+    </None>
+    <None Include="SlothUnit\x86\ClangSharp.dll">
+      <Filter>SlothUnit\x86</Filter>
+    </None>
+    <None Include="SlothUnit\x64\SlothUnit.CodeGenerator.exe">
+      <Filter>SlothUnit\x64</Filter>
+    </None>
+    <None Include="SlothUnit\x64\libclang.dll">
+      <Filter>SlothUnit\x64</Filter>
+    </None>
+    <None Include="SlothUnit\x64\ClangSharp.dll">
+      <Filter>SlothUnit\x64</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -1,4 +1,5 @@
 #include "Polyline.h"
+#include "pch.h"
 
 double Polyline::FindFirstDerivative(double x)
 {
@@ -30,12 +31,12 @@ bool Polyline::FindLocal()
 	return !segments.empty();
 }
 
-std::list<double> Polyline::FindExtr()
+std::vector<double> Polyline::FindExtr()
 {
 	if (!FindLocal())
-		return std::list<double>();
+		return std::vector<double>();
 
-	std::list<double> res;
+	std::vector<double> res;
 	for (auto i : segments) {
 		//hueta
 	}

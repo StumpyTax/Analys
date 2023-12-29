@@ -2,29 +2,30 @@
 #define GOLD_H
 
 #include "Config.h"
-
+#include "pch.h"
 #include <iostream>
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
-#include <list>
+#include <vector>
 #include <algorithm>
+#include <set>
+
 
 class Gold {
 private:
-	std::list<double*> minSegments;
-	std::list<double*> maxSegments;
-	bool FindLocal();
-public:
+	std::vector<double*> segments;
 	double (*pf)(double);
 	Config* cfg;
+	bool FindLocalMax();
+	bool FindLocalMin();
 	const double lambdagold = (sqrt(5) - 1) / 2;
+public:
 	Gold(double (*pf)(double));
 	Gold(double (*pf)(double), Config* cfg);
 	Gold(Gold& A);
-	std::list<double> FindExtrems();
-	std::list<double> FindMin();
-	std::list<double> FindMax();
+	std::set<double> FindExtrems();
+
 };
 
 #endif

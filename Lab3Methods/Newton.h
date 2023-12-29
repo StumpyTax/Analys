@@ -2,28 +2,26 @@
 #define NEWTON_H
 
 #include "Config.h"
-
+#include "pch.h"
 #include <iostream>
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
-#include <list>
+#include <vector>
 #include <algorithm>
-
+#include <set>
 class Newton {
 private:
 
-	std::list<double*> segments;
 	double FindFirstDerivative(double x);
 	double FindSecondDerivative(double x);
-	bool FindLocal();
 	double (*pf)(double);
 	Config* cfg;
 public:
 	Newton(double (*pf)(double));
 	Newton(double (*pf)(double), Config* cfg);
 	Newton(Newton& A);
-	std::list<double> FindExtrems();
+	std::set<double> FindExtrems();
 
 };
 

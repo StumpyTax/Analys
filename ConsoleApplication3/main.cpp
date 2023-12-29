@@ -1,9 +1,8 @@
-#include "Gold.h"
-#include "Newton.h"
-#include "Polyline.h"
+#include "../Lab3Methods/Gold.h"
+#include "../Lab3Methods/Newton.h"
 #include <iostream>
 
-double mainf(double x) {
+double f(double x) {
 	int v = 5;
 	return pow(x, 6) - v * pow(x, 5) + v * pow(x, 3) - 10 * pow(x, 2) + x;
 }
@@ -14,12 +13,12 @@ double testf(double x)
 }
 
 int main(){
-	//Gold gold(mainf);
-	//auto res = gold.FindExtrems();
-	//Newton newton(mainf);
+	Gold gold(f);
+	auto res = gold.FindExtrems();
+	//Newton newton(f);
 	//auto res = newton.FindExtrems();
-	Polyline poly(mainf);
-	auto res = poly.FindExtr();
+	//Polyline poly(f);
+	//auto res = poly.FindExtr();
 	for (auto i:res)
 	{
 		printf("\nxextr=%f",i);

@@ -1,4 +1,6 @@
 #pragma once
+#include "pch.h"
+
 struct Config {
 
 	double h = 1e-3;
