@@ -1,7 +1,7 @@
-#include "Polyline.h"
 #include "pch.h"
+#include "Polyline.h"
 
-double Polyline::FindFirstDerivative(double x)
+double  Polyline::FindFirstDerivative(double x)  
 {
 	return (pf(x + cfg->eps) - pf(x - cfg->eps)) / (2 * cfg->eps);
 }

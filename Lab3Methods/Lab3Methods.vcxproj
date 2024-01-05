@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -143,6 +143,7 @@
     <ClInclude Include="Dichotomy.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Gold.h" />
+    <ClInclude Include="LocalMinOnLine.h" />
     <ClInclude Include="Newton.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Polyline.h" />
@@ -151,6 +152,7 @@
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="Dichotomy .cpp" />
     <ClCompile Include="Gold.cpp" />
+    <ClCompile Include="LocalMinOnLine.cpp" />
     <ClCompile Include="Newton.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="Polyline.cpp" />

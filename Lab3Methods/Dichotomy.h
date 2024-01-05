@@ -1,27 +1,23 @@
 #ifndef DIHOTOMY_H
 #define DIHOTOMY_H
-#include "Config.cpp"
+#include "Config.h"
 
-#include <iostream>
-#include <stdio.h>
-#include <math.h>
-#include <stdlib.h>
+
 #include <vector>
-#include <set>
-#include <algorithm>
+
 
 class Dichotomy {
 private:
-	std::vector<double*> segments;
+	std::vector<double*> segments_;
 	double (*pf)(double);
-	Config* cfg;
-	bool FindLocalMax();
-	bool FindLocalMin();
+	Config* cfg_;
+	bool FindLocal();
+	double FindFirstDerivative(double x) const;
 public:
 	Dichotomy(double (*pf)(double));
 	Dichotomy(double (*pf)(double), Config* cfg);
 	Dichotomy(Dichotomy& A);
-	std::set<double> FindExtrems();
+	std::vector<double> FindExtrems();
 
 };
 #endif

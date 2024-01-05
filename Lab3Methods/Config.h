@@ -1,7 +1,7 @@
 #pragma once
 #include "pch.h"
 struct Config {
-
+public:
 	double h = 1e-2;
 	double maxX = 1000;
 	double minX = -1000;
@@ -10,6 +10,6 @@ struct Config {
 	double stopMinValueX = -10000;
 	double stopMaxValueX = 10000;
 
-	Config(double maxX, double minX, double eps,int iter, double stopMinValueX, double stopMaxValueX);
+	Config(double maxX, double minX, double eps,int iter, double stopMinValueX, double stopMaxValueX,double h);
 	Config();
 };

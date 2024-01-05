@@ -1,5 +1,5 @@
-﻿#include "Gold.h"
-#include "pch.h"
+﻿#include "pch.h"
+#include "Gold.h"
 using namespace std;
 
 Gold::Gold(double (*pf)(double))
@@ -26,8 +26,8 @@ set<double> Gold::FindExtrems() {
 		for (double* i : segments) {
 			double* a = &i[0];
 			double* b = &i[1];
-			double d = *a + lambdagold * (*b - *a);
-			double c = *a+ *b - d;
+			double d;
+			double c;
 			double prev;
 			bool error = false;
 			while (fabs(*b - *a) > cfg->eps) {
@@ -61,12 +61,6 @@ set<double> Gold::FindExtrems() {
 						break;
 					}
 				}
-				/*{
-					printf("\nerror");
-					printf("\na=%f, b=%f", *a, *b);
-					error = true;
-					break;
-				}*/
 			}
 			if (!error) {
 				double tmp = trunc(((*a + *b) / 2) * (1 / cfg->eps)) / (1 / cfg->eps);
@@ -91,7 +85,6 @@ set<double> Gold::FindExtrems() {
 bool Gold::FindLocalMin() {
 	for (int i = 0; i < cfg->iter; i++) {
 		double a, b;
-		//a = rand() * (cfg->minX - cfg->maxX) / RAND_MAX + cfg->minX;
 		a = (rand() / (double)RAND_MAX) * (cfg->maxX - cfg->minX) + cfg->minX;		
 		b = a + cfg->h;
 		short reversed = 1;
@@ -102,21 +95,21 @@ bool Gold::FindLocalMin() {
 				double fb = pf(b);
 				double fd = pf(d);
 
-				if (fa > fd && fb > fd)
+				if (fa > fd && fb > fd) {
 					if (reversed < 0) {
-						segments.push_back(new double[2] {b, a});
+						segments.push_back(new double[2]{ b, a });
 						break;
 					}
 					else {
-						segments.push_back(new double[2] {a, b});
+						segments.push_back(new double[2]{ a, b });
 						break;
 					}
+				}
 				if (fa < fb && reversed>0) {
 					reversed = -1;
 				}
 				a = d;
 				b = a+reversed*cfg->h;
-
 		}
 	}
 	return !segments.empty();
@@ -124,7 +117,6 @@ bool Gold::FindLocalMin() {
 bool Gold::FindLocalMax() {
 	for (int i = 0; i < cfg->iter; i++) {
 		double a, b;
-		//a = rand() * (cfg->minX - cfg->maxX) / RAND_MAX + cfg->minX;
 		a = (rand() / (double)RAND_MAX) * (cfg->maxX - cfg->minX) + cfg->minX;
 		b = a + cfg->h;
 		short reversed = 1;
@@ -135,15 +127,16 @@ bool Gold::FindLocalMax() {
 				double fb = pf(b);
 				double fd = pf(d);
 
-				if (fa < fd && fb < fd)
+				if (fa < fd && fb < fd) {
 					if (reversed < 0) {
-						segments.push_back(new double[2] {b, a});
+						segments.push_back(new double[2]{ b, a });
 						break;
 					}
 					else {
-						segments.push_back(new double[2] {a, b});
+						segments.push_back(new double[2]{ a, b });
 						break;
 					}
+				}
 				if (fa > fb && reversed>0) {
 					reversed = -1;
 				}

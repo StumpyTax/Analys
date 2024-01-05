@@ -2,13 +2,8 @@
 #define POLYLINE_H
 
 #include "Config.h"
-#include "pch.h"
-#include <iostream>
-#include <stdio.h>
-#include <math.h>
-#include <stdlib.h>
+
 #include <vector>
-#include <algorithm>
 
 class Polyline {
 private:
