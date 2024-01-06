@@ -10,7 +10,7 @@ double f(double x) {
 
 double testf(double x)
 {
-	return 0;
+	return (x - 2) * (x - 2);
 }
 
 int main(){

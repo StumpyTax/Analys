@@ -31,6 +31,10 @@ namespace MethodsTests
 	double one_div_x(double x) {
 		return 1 / x;
 	}
+	double xmin2pow2(double x)
+	{
+		return (x - 2) * (x - 2);
+	}
 	double ePowX2(double x)
 	{
 		return pow(2.71828, pow(x, 2));
@@ -93,6 +97,15 @@ namespace MethodsTests
 			Assert::IsTrue(gold.FindExtrems().empty() &&
 				newton.FindExtrems().empty() &&
 				dichotomy.FindExtrems().empty());
+		}
+		TEST_METHOD(TestXMinus2Pow2)
+		{
+			Gold gold(xmin2pow2);
+			Newton newton(xmin2pow2);
+			Dichotomy dichotomy(xmin2pow2);
+			Assert::IsTrue(abs(2-*gold.FindExtrems().begin()) < 1e-5 &&
+				abs(2-*newton.FindExtrems().begin()) < 1e-5 &&
+				abs(2-*dichotomy.FindExtrems().begin()) < 1e-5);
 		}
 		
 	};

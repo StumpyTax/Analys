@@ -15,6 +15,11 @@ Dichotomy::Dichotomy(double (*pf)(double), Config* cfg)
 	this->pf = pf;
 	this->cfg_ = cfg;
 }
+Dichotomy::Dichotomy(Dichotomy& A)
+{
+	this->pf = A.pf;
+	this->cfg_ = A.cfg_;
+}
 
 
 double  Dichotomy::FindFirstDerivative(const double x) const
