@@ -54,10 +54,10 @@ std::vector<double> Dichotomy::FindExtrems()
 	std::vector<double> res;
 	for (auto i : segments_) {
 		double a = i[0], b = i[1];
-		while (abs(a - b) / 2 > cfg_->eps)
+		while (abs(a - b) / 2 >= cfg_->eps)
 		{
 			double p = (a + b) / 2.0;
-			if (fabs(FindFirstDerivative(p)) < cfg_->eps)
+			if (fabs(FindFirstDerivative(p)) <= cfg_->eps)
 			{
 				a = p;
 				b = p;
@@ -67,7 +67,19 @@ std::vector<double> Dichotomy::FindExtrems()
 				b = p;
 			else a = p;
 		}
-		res.push_back((a + b) / 2);
+		double tmp = trunc(((a+b)/2) * (1 / cfg_->eps)) *cfg_->eps;
+		double p = pf(tmp);
+		if (!isnan(p) && !isinf(p) && !isnan(tmp) && !isinf(tmp))
+		{
+			bool inRes = false;
+			for (auto i : res)
+				if (abs(tmp - i) < cfg_->eps) {
+					inRes = true;
+					break;
+				}
+			if (!inRes)
+				res.push_back(tmp);
+		}
 	}
 	return res;
 }

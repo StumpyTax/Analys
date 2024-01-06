@@ -18,23 +18,23 @@ Gold::Gold(Gold& A)
 		cfg = A.cfg;
 	}
 
-set<double> Gold::FindExtrems() {
+vector<double> Gold::FindExtrems() {
 			if (!FindLocalMin() && !FindLocalMax())
-				return set<double>();
+				return vector<double>{};
 
-		set<double> res;
+		vector<double> res;
 		for (double* i : segments) {
 			double* a = &i[0];
 			double* b = &i[1];
 			double d = *a + lambdagold * (*b - *a);
 			double c = *a+ *b - d;
-			double prev;
+			double prev=(*a+*b)/2;
 			bool error = false;
 			while (fabs(*b - *a) > cfg->eps) {
 				d = *a + lambdagold * (*b - *a);
 				c = *a + *b - d;
-				bool acd = pf(*a) > pf(c) && pf(d) > pf(c);
-				bool cdb = pf(c) > pf(d) && pf(*b) > pf(d);
+				bool acd = pf(*a) > pf(c) && pf(d) > pf(c) || pf(*a) < pf(c) && pf(d) < pf(c);
+				bool cdb = pf(c) > pf(d) && pf(*b) > pf(d) || pf(c) < pf(d) && pf(*b) < pf(d);
 				if (acd)
 				{
 					prev = *b;
@@ -61,18 +61,11 @@ set<double> Gold::FindExtrems() {
 						break;
 					}
 				}
-				/*{
-					printf("\nerror");
-					printf("\na=%f, b=%f", *a, *b);
-					error = true;
-					break;
-				}*/
 			}
 			if (!error) {
 				double tmp = trunc(((*a + *b) / 2) * (1 / cfg->eps)) / (1 / cfg->eps);
 				double p = pf(tmp);
-				double j = 1, n = 0, l = -1;
-				if (abs(p) != j / n && p != sqrt(l))
+				if (!isnan(p) && !isinf(p) && !isnan(tmp) && !isinf(tmp))
 				{
 					bool inRes = false;
 					for (auto i : res)
@@ -81,7 +74,7 @@ set<double> Gold::FindExtrems() {
 							break;
 						}
 					if (!inRes)
-						res.insert(tmp);
+						res.push_back(tmp);
 				}
 			}
 		}
@@ -101,18 +94,19 @@ bool Gold::FindLocalMin() {
 				double fa = pf(a);
 				double fb = pf(b);
 				double fd = pf(d);
-
-				if (fa > fd && fb > fd)
-					if (reversed < 0) {
-						segments.push_back(new double[2] {b, a});
-						break;
+				if (!(isnan(fa) || isinf(fa) || isnan(fb) || isinf(fb) || isnan(fd) || isinf(fd))) {
+					if (fa > fd && fb > fd)
+						if (reversed < 0) {
+							segments.push_back(new double[2]{ b, a });
+								break;
+						}
+						else {
+							segments.push_back(new double[2]{ a, b });
+								break;
+						}
+					if (fa < fb && reversed>0) {
+						reversed = -1;
 					}
-					else {
-						segments.push_back(new double[2] {a, b});
-						break;
-					}
-				if (fa < fb && reversed>0) {
-					reversed = -1;
 				}
 				a = d;
 				b = a+reversed*cfg->h;
@@ -134,18 +128,20 @@ bool Gold::FindLocalMax() {
 				double fa = pf(a);
 				double fb = pf(b);
 				double fd = pf(d);
+				if (!(isnan(fa) || isinf(fa) || isnan(fb) || isinf(fb) || isnan(fd) || isinf(fd))) {
 
-				if (fa < fd && fb < fd)
-					if (reversed < 0) {
-						segments.push_back(new double[2] {b, a});
-						break;
+					if (fa < fd && fb < fd)
+						if (reversed < 0) {
+							segments.push_back(new double[2]{ b, a });
+							break;
+						}
+						else {
+							segments.push_back(new double[2]{ a, b });
+							break;
+						}
+					if (fa > fb && reversed > 0) {
+						reversed = -1;
 					}
-					else {
-						segments.push_back(new double[2] {a, b});
-						break;
-					}
-				if (fa > fb && reversed>0) {
-					reversed = -1;
 				}
 				a = d;
 				b = a + reversed * cfg->h;

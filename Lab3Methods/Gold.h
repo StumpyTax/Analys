@@ -4,11 +4,8 @@
 #include "Config.h"
 #include "pch.h"
 #include <iostream>
-#include <stdio.h>
-#include <math.h>
-#include <stdlib.h>
+#include <cmath>
 #include <vector>
-#include <algorithm>
 #include <set>
 
 
@@ -24,7 +21,7 @@ public:
 	Gold(double (*pf)(double));
 	Gold(double (*pf)(double), Config* cfg);
 	Gold(Gold& A);
-	std::set<double> FindExtrems();
+	std::vector<double> FindExtrems();
 
 };
 

@@ -1,5 +1,6 @@
 #include "../Lab3Methods/Gold.h"
 #include "../Lab3Methods/Newton.h"
+#include "../Lab3Methods/Dichotomy.h"
 #include <iostream>
 
 double f(double x) {
@@ -9,16 +10,41 @@ double f(double x) {
 
 double testf(double x)
 {
-	return x*x-2*x;
+	return 0;
 }
 
 int main(){
-	Gold gold(f);
-	auto res = gold.FindExtrems();
-	//Newton newton(f);
-	//auto res = newton.FindExtrems();
-	//Polyline poly(f);
-	//auto res = poly.FindExtr();
+	int a;
+	setlocale(LC_ALL, "");
+	std::cout << "Введите номер метода(0- Золотое сечение; 1- Метод Ньютона; 2- Метод Дихотомии)"<<std::endl;
+	std::cin >> a;
+	std::vector<double> res;
+	switch (a)
+	{
+	case 0:
+		{
+		Gold gold(f);
+		 res = gold.FindExtrems();
+		break;
+		}
+	case 1:
+		{
+		Newton newton(f);
+		 res = newton.FindExtrems();
+		break;
+		}
+	case 2:
+		{
+		Dichotomy poly(f);
+		res = poly.FindExtrems();
+		break;
+		}
+		default:
+		{
+			return 1;
+		}
+	}
+
 	for (auto i:res)
 	{
 		printf("\nxextr=%f",i);

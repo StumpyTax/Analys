@@ -35,10 +35,10 @@ Newton::Newton(Newton& A)
 	this->pf = A.pf;
 }
 
-std::set<double> Newton::FindExtrems()
+std::vector<double> Newton::FindExtrems()
 {
 
-	std::set<double> res;
+	std::vector<double> res;
 	for (int i = 0; i < cfg->iter;i++) {
 		double x = (rand() / (double)RAND_MAX) * (cfg->maxX - cfg->minX) + cfg->minX,x1;
 		do {
@@ -48,8 +48,7 @@ std::set<double> Newton::FindExtrems()
 
 		double tmp = trunc((x) * (1 / cfg->eps)) / (1 / cfg->eps);
 		double p = pf(tmp);
-		double j = 1, n = 0, l = -1;
-		if (abs(p) != j / n && p != sqrt(l))
+		if (!isnan(p)&& !isinf(p) && !isnan(tmp) && !isinf(tmp))
 		{
 			bool inRes = false;
 			for (auto i : res)
@@ -58,7 +57,7 @@ std::set<double> Newton::FindExtrems()
 					break;
 				}
 			if(!inRes)
-				res.insert(tmp);
+				res.push_back(tmp);
 		}
 	}
 	return res;

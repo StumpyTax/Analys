@@ -5,7 +5,7 @@
 #include "pch.h"
 #include <iostream>
 #include <stdio.h>
-#include <math.h>
+#include <cmath>
 #include <stdlib.h>
 #include <vector>
 #include <algorithm>
@@ -21,7 +21,7 @@ public:
 	Newton(double (*pf)(double));
 	Newton(double (*pf)(double), Config* cfg);
 	Newton(Newton& A);
-	std::set<double> FindExtrems();
+	std::vector<double> FindExtrems();
 
 };
 

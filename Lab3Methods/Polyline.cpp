@@ -38,7 +38,7 @@ std::vector<double> Polyline::FindExtr()
 
 	std::vector<double> res;
 	for (auto i : segments) {
-		//hueta
+		//
 	}
 	return res;
 }
